@@ -80,7 +80,6 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    
     public IActionResult CompleteTask(Guid id)
     {
         _taskBusiness.CompleteTask(id);
@@ -88,7 +87,6 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    
     public IActionResult ReopenTask(Guid id)
     {
         _taskBusiness.ReopenTask(id);

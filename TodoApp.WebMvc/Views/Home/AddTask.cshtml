@@ -1,0 +1,22 @@
+﻿ <div class="container">
+     <div class="row">
+         <div class="col-6">
+             <h3>Add New Task</h3>
+             <br />
+             <form action="/Home/AddTask" method="post">
+                 <div class="mb-3">
+                     <label for="taskTitle" class="form-label">Title</label>
+                     <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Input Title" />
+                 </div>
+                 <div class="mb-3">
+                     <label for="taskContent" class="form-label">Content</label>
+                     <textarea type="text" class="form-control" id="taskContent" name="content" placeholder="Input Content" ></textarea>
+                 </div>
+                 <div>
+                     <button type="submit" class="btn btn-primary">Add Task</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+     
+ </div>

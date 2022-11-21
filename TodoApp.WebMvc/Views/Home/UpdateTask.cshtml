@@ -1,0 +1,38 @@
+﻿@using TodoApp.Business.Model
+
+@model TaskModel
+
+<div class="container">
+     <div class="row">
+         <div class="col-6">
+             <h3>Update Task</h3>
+             <br />
+             <form action="/Home/UpdateTask" method="post">
+                 <input type="hidden" name="Id" value="@Model.Id" />
+                 <input type="hidden" name="Status" value="@Model.Status" />
+
+                 <div class="mb-3">
+                     <label for="taskTitle" class="form-label">Title</label>
+                     <input
+                            type="text"
+                            class="form-control"
+                            id="taskTitle"
+                            name="title"
+                            placeholder="Input Title"
+                            value="@Model.Title" />
+                 </div>
+                 <div class="mb-3">
+                     <label for="taskContent" class="form-label">Content</label>
+                     <textarea class="form-control"
+                               id="taskContent"
+                               name="content"
+                               placeholder="Input Content">@Model.Content</textarea>
+                 </div>
+                 <div>
+                     <button type="submit" class="btn btn-primary">Update Task</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+     
+ </div>

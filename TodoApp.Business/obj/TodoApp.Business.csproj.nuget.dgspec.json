@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj": {}
+  },
+  "projects": {
+    "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj",
+        "projectName": "TodoApp.Business",
+        "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj",
+        "packagesPath": "/Users/vomanh.dung/.nuget/packages/",
+        "outputPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vomanh.dung/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj": {
+                "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Extensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj",
+        "projectName": "TodoApp.Common",
+        "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj",
+        "packagesPath": "/Users/vomanh.dung/.nuget/packages/",
+        "outputPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vomanh.dung/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

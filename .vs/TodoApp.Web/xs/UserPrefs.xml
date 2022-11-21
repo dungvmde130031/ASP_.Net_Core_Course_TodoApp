@@ -1,0 +1,6 @@
+﻿<Properties StartupConfiguration="{BBE90468-9238-405D-A4BB-F06705D2CD11}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.TodoApp.Business FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.TodoApp.WebMvc FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.TodoApp.Common FirstBuild="True" />
+</Properties>

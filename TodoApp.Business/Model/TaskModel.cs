@@ -21,7 +21,5 @@ namespace TodoApp.Business.Model
 
         public TaskStatus Status { get; set; }
     }
-
-    
 }
 

@@ -3,6 +3,7 @@
 }
 
 @using TodoApp.Business.Model
+@using TodoApp.WebMvc.HtmlHelpers
 @using TaskStatus = TodoApp.Common.TaskStatus
 
 @model List<TaskModel>
@@ -10,45 +11,73 @@
 <div class="container">
     <div>
         <a href="/Home/AddTask" class="btn btn-outline-primary btn-sm mb-5">Add New Task</a>
-        <form action="/Home/TaskFilter" class="row g-3" method="post">
-            <div class="col-auto">
-                @{
-                    var SearchString = ViewBag.SearchString ?? string.Empty;
-                    var StatusFilter = ViewBag.StatusFilter ?? -1;
+        <form action="/Home/TaskFilter" method="post" class="shadow p-3 mb-5 bg-white rounded">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-5">
+                            <div>
+                                @{
+                                    var SearchString = ViewBag.SearchString ?? string.Empty;
+                                    var SearchDateFrom = ViewBag.SearchDateFrom ?? string.Empty;
+                                    var SearchDateTo = ViewBag.SearchDateTo ?? string.Empty;
+                                    var StatusFilter = ViewBag.StatusFilter ?? -1;
 
-                    var taskStatuses = new Dictionary<int, string>();
-                    taskStatuses.Add(TaskStatus.All.GetHashCode(), TaskStatus.All.ToString());
-                    taskStatuses.Add(TaskStatus.InProgress.GetHashCode(), TaskStatus.InProgress.ToString());
-                    taskStatuses.Add(TaskStatus.Completed.GetHashCode(), TaskStatus.Completed.ToString());
-                    taskStatuses.Add(TaskStatus.Deleted.GetHashCode(), TaskStatus.Deleted.ToString());
-                }
-                <input type="text" name="SearchString" class="form-control" />
-            </div>
-            <div class="col-auto">
-                <select class="form-control" name="StatusFilter">
-                    @foreach (var status in taskStatuses)
-                    {
-                        if (status.Key == StatusFilter)
-                        {
-                            <option selected value="@status.Key">@status.Value</option>
-                        }
-                        else
-                        {
-                            <option value="@status.Key">@status.Value</option>
-                        }
+                                    var taskStatuses = new Dictionary<int, string>();
+                                    taskStatuses.Add(TaskStatus.All.GetHashCode(), TaskStatus.All.ToString());
+                                    taskStatuses.Add(TaskStatus.InProgress.GetHashCode(), TaskStatus.InProgress.ToString());
+                                    taskStatuses.Add(TaskStatus.Completed.GetHashCode(), TaskStatus.Completed.ToString());
+                                    taskStatuses.Add(TaskStatus.Deleted.GetHashCode(), TaskStatus.Deleted.ToString());
+                                }
+                                <label for="SearchString">Search for Title/Content</label>
+                                <input type="text" name="SearchString" id="SearchString" class="form-control mb-3" placeholder="Type here ..." />
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div>
+                                <label for="SearchString">Filter by Task Status</label>
+                                <select class="form-control" name="StatusFilter">
+                                    @foreach (var status in taskStatuses)
+                                    {
+                                        if (status.Key == StatusFilter)
+                                        {
+                                            <option selected value="@status.Key">@status.Value</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@status.Key">@status.Value</option>
+                                        }
 
-                    }
-                </select>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="CreateTimeFrom">Filter by Create time from:</label>
+                            <input type="date" id="CreateTimeFrom" name="SearchDateFrom" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="CreateTimeTo">Filter by Create time to:</label>
+                            <input type="date" id="CreateTimeTo" name="SearchDateTo" class="form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-auto">
-                <button class="form-control" type="submit">Search</button>
-            </div>
+            
+            <button type="submit" class="btn btn-outline-primary btn-sm">Search</button>    
         </form>
     </div>
-    <div class="mt-3">
+    <div class="mt-5">
         @if(Model.Count == 0)
          {
-            <div>You have completed all taks!!!</div>
+            <div><i>You have completed all taks!</i></div>
+            <hr />
+            <div>Please contact below mail to get more tasks!</div>
+            <i>@Html.EmailCustom(mailTo: "admin@gmail.com")</i>
          }
          else
          {

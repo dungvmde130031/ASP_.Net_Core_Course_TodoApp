@@ -30,3 +30,8 @@
 /Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/obj/Debug/net6.0/TodoApp.WebMvc.pdb
 /Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/obj/Debug/net6.0/TodoApp.WebMvc.genruntimeconfig.cache
 /Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/obj/Debug/net6.0/ref/TodoApp.WebMvc.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/bin/Debug/net6.0/Microsoft.DotNet.PlatformAbstractions.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/bin/Debug/net6.0/System.Security.Permissions.dll

@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>c72892f1-6241-48a2-998c-9a554f55768a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +17,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\image\" />
+    <Folder Include="HtmlHelpers\" />
+    <Folder Include="TagHelper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="HtmlHelpers\" />
+    <None Remove="Microsoft.AspNetCore.Mvc.ViewFeatures" />
+    <None Remove="TagHelper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
   </ItemGroup>
 </Project>

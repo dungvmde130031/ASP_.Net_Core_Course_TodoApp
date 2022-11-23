@@ -7,6 +7,10 @@ namespace TodoApp.Business.Models
 
         public int StatusFilter { get; set; }
 
+        public DateTime SearchDateFrom { get; set; }
+
+        public DateTime SearchDateTo { get; set; }
+
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Business;
 using TodoApp.Business.Model;
@@ -7,6 +8,8 @@ using TodoApp.WebMvc.Models;
 
 namespace TodoApp.WebMvc.Controllers;
 
+//[Authorize]
+// Can setting Authorize in Program.cs file (app.MapControllerRoute)
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

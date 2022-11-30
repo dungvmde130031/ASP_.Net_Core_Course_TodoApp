@@ -141,10 +141,12 @@ namespace TodoApp.Business
             var tasks = GetTasks();
 
             // Filter by Title/Content
-            tasks = tasks.Where(x => (model.StatusFilter == -1) || (x.Status == (TaskStatus)model.StatusFilter)).ToList();
+            tasks = tasks.Where(x => (model.StatusFilter == -1)
+                || (x.Status == (TaskStatus)model.StatusFilter)).ToList();
             
             tasks = tasks.Where(x => string.IsNullOrEmpty(model.SearchString)
-                || (x.Title.Contains(model.SearchString) || x.Content.Contains(model.SearchString))).ToList();
+                || (x.Title.Contains(model.SearchString)
+                || x.Content.Contains(model.SearchString))).ToList();
 
             // Filter by CreateTime
             if (model.SearchDateFrom.Date.Year == 1 && model.SearchDateTo.Date.Year == 1)
@@ -158,7 +160,8 @@ namespace TodoApp.Business
                 model.SearchDateFrom = Convert.ToDateTime(s1);
                 model.SearchDateTo = Convert.ToDateTime(s2);
 
-                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom && x.CreatedTime <= model.SearchDateTo).ToList();
+                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom
+                    && x.CreatedTime <= model.SearchDateTo).ToList();
             }
             else if (model.SearchDateFrom.Date.Year == 1)
             {
@@ -168,7 +171,8 @@ namespace TodoApp.Business
 
                 model.SearchDateFrom = Convert.ToDateTime(s1);
 
-                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom && x.CreatedTime <= model.SearchDateTo).ToList();
+                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom
+                    && x.CreatedTime <= model.SearchDateTo).ToList();
             }
             else if (model.SearchDateTo.Date.Year == 1)
             {
@@ -178,11 +182,13 @@ namespace TodoApp.Business
 
                 model.SearchDateTo = Convert.ToDateTime(s2);
 
-                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom && x.CreatedTime <= model.SearchDateTo).ToList();
+                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom
+                    && x.CreatedTime <= model.SearchDateTo).ToList();
             }
             else
             {
-                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom && x.CreatedTime <= model.SearchDateTo).ToList();
+                tasks = tasks.Where(x => x.CreatedTime >= model.SearchDateFrom
+                    && x.CreatedTime <= model.SearchDateTo).ToList();
             }
 
             return tasks.OrderByDescending(t => t.UpdatedTime).ToList();

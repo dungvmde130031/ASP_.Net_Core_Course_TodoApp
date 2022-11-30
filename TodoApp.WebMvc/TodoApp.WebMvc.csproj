@@ -19,11 +19,13 @@
     <Folder Include="wwwroot\image\" />
     <Folder Include="HtmlHelpers\" />
     <Folder Include="TagHelper\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="HtmlHelpers\" />
     <None Remove="Microsoft.AspNetCore.Mvc.ViewFeatures" />
     <None Remove="TagHelper\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />

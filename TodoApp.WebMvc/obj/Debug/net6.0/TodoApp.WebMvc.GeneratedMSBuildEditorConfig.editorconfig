@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/Views/Home/AddTask.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BZGRUYXNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

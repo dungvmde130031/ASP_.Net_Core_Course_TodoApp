@@ -4,6 +4,89 @@
     "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.WebMvc/TodoApp.WebMvc.csproj": {}
   },
   "projects": {
+    "/Users/vomanh.dung/Projects/TodoApp.Web/Service/Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vomanh.dung/Projects/TodoApp.Web/Service/Service.csproj",
+        "projectName": "Service",
+        "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/Service/Service.csproj",
+        "packagesPath": "/Users/vomanh.dung/.nuget/packages/",
+        "outputPath": "/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vomanh.dung/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,6 +109,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "/Users/vomanh.dung/Projects/TodoApp.Web/Service/Service.csproj": {
+                "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/Service/Service.csproj"
+              },
               "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj": {
                 "projectPath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Common/TodoApp.Common.csproj"
               }
@@ -45,6 +131,12 @@
             "Microsoft.AspNetCore.Http.Extensions": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.11, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

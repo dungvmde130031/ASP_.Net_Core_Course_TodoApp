@@ -1,0 +1,34 @@
+﻿<div class="container">
+    <h3>Sign Up</h3>
+
+    <form asp-action="SignUp" asp-controller="Account" method="post">
+        <div>
+            <label>Email: </label>
+            <input type="text" name="email" class="form-control" />
+        </div>
+
+        <br />
+
+        <div>
+            <label>Username: </label>
+            <input type="text" name="Username" class="form-control" />
+        </div>
+
+        <br />
+
+        <div>
+            <label>Password: </label>
+            <input type="password" name="Password" class="form-control" />
+        </div>
+
+        <br />
+        @Html.ValidationSummary()
+        <br />
+
+        <button type="submit" class="btn btn-primary">Sign Up</button> 
+    </form>
+
+    <div>
+        @TempData["verifyLink"]
+    </div>
+</div>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+2JfEsZpwnVX+DxDA4+OeXVzIWck3X3W587pwsE5tHCoZ+VFL3NnI41n36NOXcEi03EQ2GFF6btk9R/8Ch7zWA==",
+  "dgSpecHash": "UedcwsrsfNBB06lNKUmq/oIlplPJohns1Iic3nh0ddWdRxe3Sj1qTbjxXAk7iPU0X1j3+duGVOGoORvbf4DpTw==",
   "success": true,
   "projectFilePath": "/Users/vomanh.dung/Projects/TodoApp.Web/TodoApp.Business/TodoApp.Business.csproj",
   "expectedPackageFiles": [
@@ -45,9 +45,14 @@
     "/Users/vomanh.dung/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/vomanh.dung/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "/Users/vomanh.dung/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "/Users/vomanh.dung/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "/Users/vomanh.dung/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg.sha512",
+    "/Users/vomanh.dung/.nuget/packages/system.data.sqlclient/4.8.5/system.data.sqlclient.4.8.5.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.drawing.common/4.7.0/system.drawing.common.4.7.0.nupkg.sha512",
     "/Users/vomanh.dung/.nuget/packages/system.identitymodel.tokens.jwt/6.8.0/system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",

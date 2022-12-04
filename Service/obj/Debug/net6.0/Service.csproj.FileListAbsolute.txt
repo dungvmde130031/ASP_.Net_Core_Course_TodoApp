@@ -1,0 +1,16 @@
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/appsettings.json
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/appsettings.Development.json
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/Service.deps.json
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/Service.runtimeconfig.json
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/Service.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/bin/Debug/net6.0/Service.pdb
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.csproj.AssemblyReference.cache
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.AssemblyInfoInputs.cache
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.AssemblyInfo.cs
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.csproj.CoreCompileInputs.cache
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/refint/Service.dll
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.pdb
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/Service.genruntimeconfig.cache
+/Users/vomanh.dung/Projects/TodoApp.Web/Service/obj/Debug/net6.0/ref/Service.dll

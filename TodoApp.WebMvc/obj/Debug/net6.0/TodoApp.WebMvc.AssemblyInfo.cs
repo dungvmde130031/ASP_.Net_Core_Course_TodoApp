@@ -10,6 +10,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("c72892f1-6241-48a2-998c-9a554f55768a")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TodoApp.WebMvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]

@@ -1,5 +1,41 @@
-﻿<Properties StartupConfiguration="{BBE90468-9238-405D-A4BB-F06705D2CD11}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Service FirstBuild="True" />
+﻿<Properties StartupConfiguration="Multiple Projects">
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Multiple Projects" Name="Multiple Projects">
+      <Items>
+        <StartupItem ItemId="{BBE90468-9238-405D-A4BB-F06705D2CD11}" ItemName="TodoApp.WebMvc" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
   <MonoDevelop.Ide.ItemProperties.TodoApp.WebMvc PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Service/Database/ApplicationDbContext.cs">
+    <Files>
+      <File FileName="TodoApp.WebMvc/Program.cs" Line="29" Column="31" />
+      <File FileName="Service/Database/ApplicationDbContext.cs" Line="15" Column="10" />
+      <File FileName="TodoApp.WebMvc/appsettings.json" Line="10" Column="85" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TodoApp.Web" expanded="True" selected="True">
+            <Node name="Service" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Database" expanded="True" />
+            </Node>
+            <Node name="TodoApp.Business" expanded="True" />
+            <Node name="TodoApp.WebMvc" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

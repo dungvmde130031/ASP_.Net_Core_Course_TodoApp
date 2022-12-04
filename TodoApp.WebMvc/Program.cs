@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //  Not use Entity Framework
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//  builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 //    .AddCookie(options =>
 //    {
 //        options.Cookie.Name = "MyLoginCookie";
@@ -21,15 +21,28 @@ builder.Services.AddControllersWithViews();
 //        options.SlidingExpiration = true;
 //    });
 
-var connectionString = builder.Configuration.GetConnectionString("todoappdb");
+var connectionString = builder.Configuration.GetConnectionString("Default");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+
+    options.Password.RequireDigit = true;
+    options.Password.RequireNonAlphanumeric = true;
+
+    options.User.RequireUniqueEmail = true;
+});
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 
 builder.Services.AddScoped<ITaskBusiness, TaskBusiness>();
+
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 
@@ -42,6 +55,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();

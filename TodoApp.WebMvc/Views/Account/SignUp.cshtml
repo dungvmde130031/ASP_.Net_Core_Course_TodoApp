@@ -21,6 +21,14 @@
             <input type="password" name="Password" class="form-control" />
         </div>
 
+        <div>
+            <label>Role: </label>
+            <select name="Role" class="form-control">
+                <option value="Admin">Admin</option>
+                <option value="Member">Member</option>
+            </select>
+        </div>
+
         <br />
         @Html.ValidationSummary()
         <br />

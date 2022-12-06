@@ -20,6 +20,7 @@
     <Folder Include="HtmlHelpers\" />
     <Folder Include="TagHelper\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="PolicyRequirements\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="HtmlHelpers\" />
@@ -33,6 +34,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="PolicyRequirements\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />

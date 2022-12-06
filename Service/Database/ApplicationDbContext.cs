@@ -19,15 +19,17 @@ namespace Service.Database
 
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder builder)
-        //{
-        //    base.OnConfiguring(builder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            base.OnConfiguring(builder);
+        }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Account> Accounts { get; set; }
     }
 }
 

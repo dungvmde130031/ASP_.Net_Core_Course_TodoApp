@@ -10,6 +10,7 @@ namespace TodoApp.WebMvc.Controllers;
 
 //[Authorize]
 // Can setting Authorize in Program.cs file (app.MapControllerRoute)
+[Authorize(Policy = "AdminOnlyNew")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -41,6 +42,7 @@ public class HomeController : Controller
 
     // Add task
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public IActionResult AddTask()
     {
         return View();

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace TodoApp.WebMvc.Controllers
 {
-    [AllowAnonymous]
+    //[AllowAnonymous]
     //public class AccountController : Controller
     //{
     //    public IActionResult Login()
@@ -36,7 +36,9 @@ namespace TodoApp.WebMvc.Controllers
     //            {
     //                new Claim(ClaimTypes.Name, username),
     //                new Claim(ClaimTypes.NameIdentifier, username),
-    //                new Claim("Username", username)
+    //                new Claim("Username", username),
+    //                new Claim(ClaimTypes.Role, "User"),
+    //                new Claim(ClaimTypes.Role, "Admin")
     //            };
 
     //            var claimsIdentity = new ClaimsIdentity(claims,
@@ -73,11 +75,14 @@ namespace TodoApp.WebMvc.Controllers
     //    }
     //}
 
+    // ---------- B6 ----------------------------
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
 
         private SignInManager<IdentityUser> _signInManager;
         private UserManager<IdentityUser> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
         public AccountController(SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager)
@@ -85,7 +90,7 @@ namespace TodoApp.WebMvc.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-         
+
         public IActionResult Login()
         {
             return View();
@@ -135,7 +140,8 @@ namespace TodoApp.WebMvc.Controllers
         public async Task<IActionResult> SignUp(
             [FromForm(Name = "Username")] string username,
             [FromForm(Name = "Password")] string password,
-            [FromQuery(Name = "Email")] string email)
+            [FromQuery(Name = "Email")] string email,
+            [FromQuery(Name = "Role")] string roleName)
         {
             var user = new IdentityUser(username)
             {
@@ -146,30 +152,42 @@ namespace TodoApp.WebMvc.Controllers
 
             if (result.Succeeded)
             {
-                if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                var addRoleResult = await _userManager.AddToRoleAsync(user, roleName);
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Gender, "Male"));
+
+
+                foreach (var item in result.Errors)
                 {
-                    // Confirm email before login
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-
-                    // Send email
-                    var verifyLink = Url.ActionLink(action: "ComfirmEmail", controller: "Account",
-                        values: new { userId = user.Id, code });
-
-                    TempData["verifyLink"] = verifyLink;
-
-                    return View();
+                    ModelState.AddModelError(item.Code, item.Description);
                 }
-                else
-                {
-                    await _signInManager.SignInAsync(user, false);
 
-                    return Redirect("/");
+                if (addRoleResult.Succeeded)
+                {
+                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    {
+                        // Confirm email before login
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+                        // Send email
+                        var verifyLink = Url.ActionLink(action: "ComfirmEmail", controller: "Account",
+                            values: new { userId = user.Id, code });
+
+                        TempData["verifyLink"] = verifyLink;
+
+                        return View();
+                    }
+                    else
+                    {
+                        await _signInManager.SignInAsync(user, false);
+
+                        return Redirect("/");
+                    }
                 }
             }
 
-            foreach(var item in result.Errors)
+            foreach (var item in result.Errors)
             {
                 ModelState.AddModelError(item.Code, item.Description);
 

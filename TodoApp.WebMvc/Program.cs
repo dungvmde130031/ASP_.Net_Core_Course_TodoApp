@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Service.Database;
 using TodoApp.Business;
+using System.Security.Claims;
+using TodoApp.WebMvc.PolicyRequirements;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,22 +13,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //  Not use Entity Framework
-//  builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(options =>
-//    {
-//        options.Cookie.Name = "MyLoginCookie";
-//        options.AccessDeniedPath = "/Account/AccessDenied";
-//        options.LoginPath = "/Account/Login";
-//        options.LogoutPath = "/Account/Logout";
-//        options.ExpireTimeSpan = TimeSpan.FromMilliseconds(20);
-//        options.SlidingExpiration = true;
-//    });
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+  .AddCookie(options =>
+  {
+      options.Cookie.Name = "MyLoginCookie";
+      options.AccessDeniedPath = "/Account/AccessDenied";
+      options.LoginPath = "/Account/Login";
+      options.LogoutPath = "/Account/Logout";
+      options.ExpireTimeSpan = TimeSpan.FromMilliseconds(20);
+      options.SlidingExpiration = true;
+  });
 
 var connectionString = builder.Configuration.GetConnectionString("Default");
-
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -36,6 +40,28 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     options.User.RequireUniqueEmail = true;
 });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+    {
+        policy.RequireRole("SuperAdmin");
+        policy.RequireClaim(ClaimTypes.Role, "SuperAdmin");
+        policy.RequireClaim(ClaimTypes.Role, "Admin");
+    });
+
+    options.AddPolicy("AdminOnlyNew", policy =>
+    {
+        // 1 Policy xu ly cho nhieu Requirement
+        // 1 Requirement duoc xy ly boi nhieu Handler
+        policy.Requirements.Add(new AdminOnlyRequirement("Admin", "DungVM2"));
+        //policy.Requirements.Add(new GenderRequirement("Men"));
+    });
+});
+
+builder.Services.AddSingleton<IAuthorizationHandler, AdminOnlyRequirementHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, GenderRequirementHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();

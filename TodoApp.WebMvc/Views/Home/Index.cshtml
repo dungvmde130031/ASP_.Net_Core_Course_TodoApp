@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page - List task";
 }
 
+@using System.Security.Claims
 @using TodoApp.Business.Model
 @using TodoApp.WebMvc.HtmlHelpers
 @using TaskStatus = TodoApp.Common.TaskStatus
@@ -10,7 +11,11 @@
 
 <div class="container">
     <div>
-        <a href="/Home/AddTask" class="btn btn-outline-primary btn-sm mb-5">Add New Task</a>
+        @if (User.IsInRole("SuperAdmin")
+                && User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Gender)?.Value == "")
+        {
+            <a href="/Home/AddTask" class="btn btn-outline-primary btn-sm mb-5">Add New Task</a>
+        }
         <form action="/Home/TaskFilter" method="post" class="shadow p-3 mb-5 bg-white rounded">
             <div class="row">
                 <div class="col-6">
@@ -67,8 +72,8 @@
                     </div>
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-outline-primary btn-sm">Search</button>    
+
+            <button type="submit" class="btn btn-outline-primary btn-sm">Search</button>
         </form>
     </div>
     <div class="mt-5">

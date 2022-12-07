@@ -17,6 +17,9 @@
     <None Remove="Microsoft.Extensions.DependencyInjection" />
     <None Remove="appsettings.json" />
     <None Remove="appsettings.Development.json" />
+    <None Remove="Service\" />
+    <None Remove="Repositories\" />
+    <None Remove="UnitOfWork\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11">
@@ -36,6 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="Service\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="UnitOfWork\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="appsettings.json" Condition="'$(ExcludeConfigFilesFromBuildOutput)'!='true'">

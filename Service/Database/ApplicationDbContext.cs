@@ -29,7 +29,9 @@ namespace Service.Database
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Account>? Accounts { get; set; }
+
+        public DbSet<Task>? Tasks { get; set; }
     }
 }
 

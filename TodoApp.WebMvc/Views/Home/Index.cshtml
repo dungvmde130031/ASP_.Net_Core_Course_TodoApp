@@ -11,7 +11,7 @@
 
 <div class="container">
     <div>
-        @if (User.IsInRole("SuperAdmin")
+        @if (User.IsInRole("Admin")
                 && User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Gender)?.Value == "")
         {
             <a href="/Home/AddTask" class="btn btn-outline-primary btn-sm mb-5">Add New Task</a>

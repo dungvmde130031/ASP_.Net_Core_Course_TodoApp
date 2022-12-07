@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using TodoApp.Business.Models;
 using TaskStatus = TodoApp.Common.TaskStatus;
+using Service.Service;
 
 namespace TodoApp.Business
 {
@@ -12,7 +13,7 @@ namespace TodoApp.Business
 
         TaskModel GetTask(Guid id);
 
-        List<TaskModel> GetTasks();
+        List<TaskModel> GetAllTasks();
 
         TaskModel UpdateTask(TaskModel taskModel);
 
@@ -28,59 +29,35 @@ namespace TodoApp.Business
     public class TaskBusiness : ITaskBusiness
     {
         private IHttpContextAccessor _httpContextAccessor;
+        private ITaskService _taskService;
 
         private ISession _session => _httpContextAccessor.HttpContext.Session;
 
-        public TaskBusiness(IHttpContextAccessor httpContextAccessor)
+        public TaskBusiness(IHttpContextAccessor httpContextAccessor,
+            ITaskService taskService)
         {
             _httpContextAccessor = httpContextAccessor;
-        }
-
-        public TaskModel AddTask(TaskModel taskModel)
-        {
-            taskModel.Id = Guid.NewGuid();
-            taskModel.CreatedTime = DateTime.Now;
-            taskModel.CreatedBy = "ADMIN";
-            taskModel.UpdatedTime = DateTime.Now;
-            taskModel.UpdatedBy = "ADMIN";
-            taskModel.Status = Common.TaskStatus.InProgress;
-
-            _session.SetTaskModel(taskModel);
-            return taskModel;
-        }
-
-        public bool DeleteTask(Guid id)
-        {
-            var currentTask = _session.GetTaskModel(id);
-
-            if(currentTask != null)
-            {
-                currentTask.Status = Common.TaskStatus.Deleted;
-                _session.SetTaskModel(currentTask);
-
-                return true;
-            }
-            return false;
+            _taskService = taskService;
         }
 
         public TaskModel GetTask(Guid id)
         {
-            var currentTask = _session.GetTaskModel(id);
+            var currentTask = _taskService.GetTask(id);
 
             return currentTask;
         }
 
-        public List<TaskModel> GetTasks()
+        public List<TaskModel> GetAllTasks()
         {
             var tasks = new List<TaskModel>();
 
-            if(_session.Keys.Any())
+            if (_session.Keys.Any())
             {
-                foreach(var key in _session.Keys)
+                foreach (var key in _session.Keys)
                 {
                     var task = _session.GetTaskModel(Guid.Parse(key));
 
-                    if(task != null)
+                    if (task != null)
                     {
                         tasks.Add(task);
                     }
@@ -89,23 +66,59 @@ namespace TodoApp.Business
             return tasks.OrderByDescending(t => t.UpdatedTime).ToList();
         }
 
+        public TaskModel AddTask(TaskModel taskModel)
+        {
+            taskModel.Id = Guid.NewGuid();
+            taskModel.CreatedTime = DateTime.Now;
+            taskModel.CreatedBy = "Admin";
+            taskModel.UpdatedTime = DateTime.Now;
+            taskModel.UpdatedBy = "Admin";
+            taskModel.Status = TaskStatus.InProgress;
+
+            //_session.SetTaskModel(taskModel);
+            _taskService.AddTask(new Service.Database.Task
+            {
+                Title = taskModel.Title,
+                Content = taskModel.Content,
+                DueDate = taskModel.Deadline,
+                CreatedBy = "Admin",
+                CreatedTime = DateTime.Now,
+                UpdatedBy = "Admin",
+                UpdatedTime = DateTime.Now
+            });
+
+            return taskModel;
+        }
+
         public TaskModel UpdateTask(TaskModel taskModel)
         {
-            var currentTask = _session.GetTaskModel(taskModel.Id);
+            var currentTask = _taskService.GetTask(taskModel.Id);
 
             if (currentTask != null)
             {
-                currentTask.Status = taskModel.Status;
                 currentTask.Title = taskModel.Title;
                 currentTask.Content = taskModel.Content;
+                currentTask.DueDate = taskModel.Deadline;
                 currentTask.UpdatedTime = DateTime.Now;
-                currentTask.UpdatedBy = "ADMIN";
+                currentTask.UpdatedBy = "Admin";
 
+                _taskService.UpdateTask(currentTask);
+            }
+            return taskModel;
+        }
+
+        public bool DeleteTask(Guid id)
+        {
+            var currentTask = _taskService.GetTask(id);
+
+            if (currentTask != null)
+            {
+                currentTask.Status = Common.TaskStatus.Deleted;
                 _session.SetTaskModel(currentTask);
 
-                return currentTask;
+                return true;
             }
-            return currentTask;
+            return false;
         }
 
         public bool CompleteTask(Guid id)
@@ -138,7 +151,7 @@ namespace TodoApp.Business
 
         public List<TaskModel> TaskFilter(TaskSearchModel model)
         {
-            var tasks = GetTasks();
+            var tasks = GetAllTasks();
 
             // Filter by Title/Content
             tasks = tasks.Where(x => (model.StatusFilter == -1)

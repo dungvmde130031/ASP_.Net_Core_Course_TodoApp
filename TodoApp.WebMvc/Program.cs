@@ -6,6 +6,8 @@ using TodoApp.Business;
 using System.Security.Claims;
 using TodoApp.WebMvc.PolicyRequirements;
 using Microsoft.AspNetCore.Authorization;
+using Service.UnitOfWork;
+using Service.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddRoles<IdentityRole>()

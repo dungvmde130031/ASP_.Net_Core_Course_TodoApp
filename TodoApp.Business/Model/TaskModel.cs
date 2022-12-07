@@ -28,6 +28,8 @@ namespace TodoApp.Business.Model
         public string UpdatedBy { get; set; }
 
         public TaskStatus Status { get; set; }
+
+        public DateTime Deadline { get; set; }
     }
 }
 
